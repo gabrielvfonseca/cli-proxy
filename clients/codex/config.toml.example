@@ -1,0 +1,9 @@
+model_provider = "cliproxy"
+
+[model_providers.cliproxy]
+name = "CLIProxyAPI"
+base_url = "https://<TUNNEL_URL>/v1"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = true
+experimental_bearer_token = "<CLIPROXY_ACCESS_KEY>"

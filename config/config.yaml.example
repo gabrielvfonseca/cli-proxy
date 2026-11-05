@@ -1,0 +1,18 @@
+config-version: 8
+server:
+  host: "0.0.0.0"
+  port: 8317
+  trusted-proxies: ["127.0.0.1", "::1"]
+management:
+  allow-remote: true
+  secret-key: "${CLIPROXY_MANAGEMENT_KEY}"
+access:
+  api-keys:
+    - "${CLIPROXY_ACCESS_KEY}"
+routing:
+  strategy: "round-robin"
+  session-affinity: true
+  session-affinity-ttl: "1h"
+  retry:
+    request-retry: 3
+    max-retry-interval: 30

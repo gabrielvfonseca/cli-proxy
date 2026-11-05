@@ -1,0 +1,6 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://<TUNNEL_URL>",
+    "ANTHROPIC_AUTH_TOKEN": "<CLIPROXY_ACCESS_KEY>"
+  }
+}

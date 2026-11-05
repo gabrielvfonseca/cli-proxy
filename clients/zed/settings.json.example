@@ -1,0 +1,6 @@
+{
+  "anthropic": {
+    "baseUrl": "https://<TUNNEL_URL>",
+    "apiKey": "<CLIPROXY_ACCESS_KEY>"
+  }
+}

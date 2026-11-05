@@ -1,0 +1,22 @@
+# Environment
+.env
+.env.local
+
+# Docker
+data/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets
+*.key
+*.pem
+secrets/

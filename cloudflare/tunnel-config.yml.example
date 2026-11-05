@@ -1,0 +1,10 @@
+# Cloudflare Tunnel config for cliproxyapi
+# Create a tunnel: cloudflared tunnel create cliproxy
+# Then copy this to ~/.cloudflared/config.yml and uncomment the tunnel token section.
+
+tunnel: cliproxy
+credentials-file: ${HOME}/.cloudflared/cliproxy.json
+
+ingress:
+  - service: http://127.0.0.1:8317
+  - service: http_status:404

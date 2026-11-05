@@ -1,0 +1,38 @@
+services:
+  cliproxyapi:
+    image: eceasy/cli-proxy-api:latest
+    container_name: cliproxyapi
+    restart: unless-stopped
+    ports:
+      - "${CLIPROXY_HOST:-0.0.0.0}:${CLIPROXY_PORT:-8317}:8317"
+    volumes:
+      - ./config/config.yaml:/app/config.yaml:ro
+      - ${DATA_DIR:-./data}:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8317/v1/models"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - cliproxy-net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cliproxy-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml --token ${CLOUDFLARED_TOKEN:-}
+    depends_on:
+      cliproxyapi:
+        condition: service_healthy
+    profiles:
+      - tunnel
+    volumes:
+      - ./cloudflare/tunnel-config.yml:/etc/cloudflared/config.yml:ro
+      - ${CLOUDFLARED_CREDENTIALS_DIR:-$HOME/.cloudflared}:/etc/cloudflared:ro
+    networks:
+      - cliproxy-net
+
+networks:
+  cliproxy-net:
+    driver: bridge
