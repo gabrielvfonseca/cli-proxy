@@ -1,18 +1,19 @@
-# cliproxy — CLIProxyAPI Hub
+# CLI Proxy
 
-> Self-hosted CLIProxyAPI in Docker with Cloudflare Tunnel.  
+**Self-hosted CLIProxyAPI in Docker with Cloudflare Tunnel.**
+
 > Based on Theo (theo4gg)'s guide: *"How I manage 7 Claude and 3 Codex accounts across 12+ computers"*  
 > YouTube: https://www.youtube.com/watch?v=D8PikZ1KhUo
 
 **Full credit to Theo for the original concept.** See `CREDITS.md` and `NOTICE.md`.
 
-> ⚠️ **NOTICE:** This setup may violate Terms of Service and may result in account bans. Use at your own risk. Read [`NOTICE.md`](NOTICE.md) before deploying.
+> **NOTICE:** This setup may violate Terms of Service and may result in account bans. Use at your own risk. Read [`NOTICE.md`](NOTICE.md) before deploying.
 
 ---
 
 ## What This Is
 
-One home Ubuntu server runs **CLIProxyAPI** in Docker as a central auth proxy for your Claude and Codex accounts. All client machines point at the hub over **Cloudflare Tunnel** (Theo uses Tailscale; this repo adapts for Cloudflare Tunnel). Supported clients: **Zed, OpenCode, Claude Code, Codex**.
+One home Ubuntu server runs **CLI Proxy** in Docker as a central auth proxy for your Claude and Codex accounts. All client machines point at the hub over **Cloudflare Tunnel** (Theo uses Tailscale; this repo adapts for Cloudflare Tunnel). Supported clients: **Zed, OpenCode, Claude Code, Codex**.
 
 You sign in once on the hub. Every other machine shares that auth. No more signing in on every device.
 
@@ -61,7 +62,7 @@ clipproxy/
 ├── .gitignore                # Ignores .env, data/, backups/, logs
 ├── LICENSE.md                # MIT License
 ├── Makefile                  # Convenience targets (up, down, health, backup, etc.)
-├── NOTICE.md                 # ⚠️ Legal disclaimer — READ THIS
+├── NOTICE.md                 # Legal disclaimer (READ THIS!)
 ├── CREDITS.md                # Attribution to Theo (theo4gg) and third-party projects
 ├── GUIDE.md                  # Full setup guide (adapted from Theo's guide)
 ├── PLAN.md                   # Deployment checklist
